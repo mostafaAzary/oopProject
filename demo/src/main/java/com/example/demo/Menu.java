@@ -37,6 +37,16 @@ public class Menu {
     }
 
 
+
+    @FXML
+    private Label profileUsername = new Label();
+    @FXML
+    private Label postsNumber = new Label();
+    @FXML
+    private Label followersNumber = new Label();
+    @FXML
+    private Label followingsNumber = new Label();
+
     //login
     @FXML
     private Label loginLabel;
@@ -75,22 +85,17 @@ public class Menu {
 
 
     //profile
-    @FXML
-    private Label profileUsername = new Label();
-    @FXML
-    private Label postsNumber = new Label();
-    @FXML
-    private Label followersNumber = new Label();
-    @FXML
-    private Label followingsNumber = new Label();
+
 
     @FXML
     protected void setProfile(){
-        //System.out.println(manager.readingData.getAccount(manager.ID).getFollowings());
+
         profileUsername.setText(manager.ID);
         postsNumber.setText(String.valueOf(manager.readingData.getAccount(manager.ID).getPostsNumber()));
         followersNumber.setText(String.valueOf(manager.readingData.getAccount(manager.ID).getFollowersNumber()));
         followingsNumber.setText(String.valueOf(manager.readingData.getAccount(manager.ID).getFollowingsNumber()));
+        System.out.println();
+        System.out.println(profileUsername.getText());
     }
 
 
