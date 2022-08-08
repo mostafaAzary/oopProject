@@ -1,17 +1,19 @@
 package com.example.demo;
 
-import com.example.demo.chat.PrivateChat;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import com.example.demo.account.Account;
+import com.example.demo.chat.Group;
+import com.example.demo.chat.Massage;
+import com.example.demo.chat.PrivateChat;
+import com.example.demo.post.Comment;
+import com.example.demo.post.Post;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,11 +48,11 @@ public class Menu {
     public void buttonLogin(ActionEvent e) throws IOException {
         String string = manager.login(loginUsername.getText(), loginPassword.getText());
         if(string.equals("ok")){
+            setProfile();
             Parent root = FXMLLoader.load(getClass().getResource("Scene2.fxml"));
             stage = (Stage)((javafx.scene.Node)e.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
-            setProfile();
             stage.show();
         }
         else loginLabel.setText(string);
@@ -74,20 +76,21 @@ public class Menu {
 
     //profile
     @FXML
-    private Label profileUsername;
+    private Label profileUsername = new Label();
     @FXML
-    private Label postsNumber;
+    private Label postsNumber = new Label();
     @FXML
-    private Label followersNumber;
+    private Label followersNumber = new Label();
     @FXML
-    private Label followingsNumber;
+    private Label followingsNumber = new Label();
 
     @FXML
     protected void setProfile(){
+        //System.out.println(manager.readingData.getAccount(manager.ID).getFollowings());
         profileUsername.setText(manager.ID);
         postsNumber.setText(String.valueOf(manager.readingData.getAccount(manager.ID).getPostsNumber()));
-        followersNumber.setText(String.valueOf(manager.readingData.getAccount(manager.ID).getFollowers()));
-        followingsNumber.setText(String.valueOf(manager.readingData.getAccount(manager.ID).getFollowings()));
+        followersNumber.setText(String.valueOf(manager.readingData.getAccount(manager.ID).getFollowersNumber()));
+        followingsNumber.setText(String.valueOf(manager.readingData.getAccount(manager.ID).getFollowingsNumber()));
     }
 
 

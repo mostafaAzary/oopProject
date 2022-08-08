@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="demo" options="--add-exports java.xml/com.sun.org.apache.xalan.internal.xsltc.compiler.util=com.example.demo" />
+      <module name="demo" options="" />
     </option>
   </component>
 </project>

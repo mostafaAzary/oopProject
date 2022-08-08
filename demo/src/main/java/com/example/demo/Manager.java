@@ -17,6 +17,13 @@ public class Manager {
     ReadingData readingData;
     String ID;
 
+    public Manager(String ID) {
+        this.ID = ID;
+        this.writingData = new WritingData();
+        this.readingData = new ReadingData();
+        readingData.setNumber();
+    }
+
     public Manager(){
         this.writingData = new WritingData();
         this.readingData = new ReadingData();

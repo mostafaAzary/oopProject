@@ -27,9 +27,7 @@ public class Account {
         this.privateChats = "";
     }
 
-    public Account(String ID, String password, int followersNumber, String followers, int followingsNumber,
-                   String followings, String blocks, int postsNumber, String posts,
-                   String groups, String privateChats) {
+    public Account(String ID, String password, int followersNumber, String followers, int followingsNumber, String followings, String blocks, int postsNumber, String posts, String groups, String privateChats) {
         this.ID = ID;
         this.password = password;
         this.followersNumber = followersNumber;
@@ -45,197 +43,276 @@ public class Account {
 
     public String showProfile() {
         String output = this.ID + "\n";
-        output += followersNumber + " followers" + "    ";
-        output += followingsNumber + " followings" + "    ";
-        output += postsNumber + " posts";
+        output = output + this.followersNumber + " followers    ";
+        output = output + this.followingsNumber + " followings    ";
+        output = output + this.postsNumber + " posts";
         return output;
     }
 
     public String blockList() {
         String output = "";
-        if(blocks == null)
-            output = "No blocked account. "+ "\n";
-        else
-            for (String block : blocks.split(", ")) {
-                output += block + "\n";
+        if (this.blocks == null) {
+            output = "No blocked account. \n";
+        } else {
+            String[] var2 = this.blocks.split(", ");
+            int var3 = var2.length;
+
+            for(int var4 = 0; var4 < var3; ++var4) {
+                String block = var2[var4];
+                output = output + block + "\n";
             }
+        }
+
         return output;
     }
 
     public String followingList() {
-        //System.out.println(followings);
         String output = "";
-        if(followings == null)
-            output = "No following exists. "+ "\n";
-        else
-            for (String following : followings.split(", ")) {
-                //System.out.println(following);
-                output += following + "\n";
+        if (this.followings == null) {
+            output = "No following exists. \n";
+        } else {
+            String[] var2 = this.followings.split(", ");
+            int var3 = var2.length;
+
+            for(int var4 = 0; var4 < var3; ++var4) {
+                String following = var2[var4];
+                output = output + following + "\n";
             }
-        //System.out.println();
+        }
+
         return output;
     }
 
     public String followerList() {
         String output = "";
-        if(followers == null)
-            output = "No follower exists. "+ "\n";
-        else
-            for (String follower : followers.split(", ")) {
-                output += follower + "\n";
+        if (this.followers == null) {
+            output = "No follower exists. \n";
+        } else {
+            String[] var2 = this.followers.split(", ");
+            int var3 = var2.length;
+
+            for(int var4 = 0; var4 < var3; ++var4) {
+                String follower = var2[var4];
+                output = output + follower + "\n";
             }
+        }
+
         return output;
     }
 
     public String groupList() {
-        String output = "", string = null;
-        if(groups==null)
-            output = "No group exists. "+ "\n";
-        else
-            for (String group : (groups + ",  ").split(", ")) {
-                output += group + "\n";
+        String output = "";
+        String string = null;
+        if (this.groups == null) {
+            output = "No group exists. \n";
+        } else {
+            String[] var3 = (this.groups + ",  ").split(", ");
+            int var4 = var3.length;
+
+            for(int var5 = 0; var5 < var4; ++var5) {
+                String group = var3[var5];
+                output = output + group + "\n";
             }
+        }
+
         return output;
     }
 
     public String privateChatList() {
         String output = "";
-        if(privateChats == null)
-            output = "No private com.example.phase2.chat exists. "+ "\n";
-        else{
-            for (String privateChat : privateChats.split(", ")) {
-                output += privateChat + "\n";
+        if (this.privateChats == null) {
+            output = "No private com.example.phase2.chat exists. \n";
+        } else {
+            String[] var2 = this.privateChats.split(", ");
+            int var3 = var2.length;
+
+            for(int var4 = 0; var4 < var3; ++var4) {
+                String privateChat = var2[var4];
+                output = output + privateChat + "\n";
             }
+
             output = output.replaceAll(",", "");
             output = output.replaceAll(this.ID, "");
         }
+
         return output;
     }
 
     public void newPost(String id) {
-        if (postsNumber > 0)
-            posts += ", " + id;
-        else posts = id;
-        this.postsNumber ++;
+        if (this.postsNumber > 0) {
+            this.posts = this.posts + ", " + id;
+        } else {
+            this.posts = id;
+        }
+
+        ++this.postsNumber;
     }
 
     public int getPostsNumber() {
-        return postsNumber;
+        return this.postsNumber;
     }
 
     public boolean checkFollowing(String id) {
-        if(followings == null)
+        if (this.followings == null) {
             return false;
-        for (String following : followings.split(", ")) {
-            if (following.equals(id)){
-                return true;
+        } else {
+            String[] var2 = this.followings.split(", ");
+            int var3 = var2.length;
+
+            for(int var4 = 0; var4 < var3; ++var4) {
+                String following = var2[var4];
+                if (following.equals(id)) {
+                    return true;
+                }
             }
+
+            return false;
         }
-        return false;
     }
 
     public boolean checkFollower(String id) {
-        if(followers == null)
+        if (this.followers == null) {
             return false;
-        for (String follower : followers.split(", ")) {
-            if (follower.equals(id))
-                return true;
+        } else {
+            String[] var2 = this.followers.split(", ");
+            int var3 = var2.length;
+
+            for(int var4 = 0; var4 < var3; ++var4) {
+                String follower = var2[var4];
+                if (follower.equals(id)) {
+                    return true;
+                }
+            }
+
+            return false;
         }
-        return false;
     }
 
     public boolean checkBlock(String id) {
-        if(blocks == null)
+        if (this.blocks == null) {
             return false;
-        for (String block : blocks.split(", ")) {
-            if (block.equals(id))
-                return true;
+        } else {
+            String[] var2 = this.blocks.split(", ");
+            int var3 = var2.length;
+
+            for(int var4 = 0; var4 < var3; ++var4) {
+                String block = var2[var4];
+                if (block.equals(id)) {
+                    return true;
+                }
+            }
+
+            return false;
         }
-        return false;
     }
 
-    public  void block(String ID){
-        if(blocks == null)
-            blocks = ID;
-        else
-            blocks += ", " + ID;
+    public void block(String ID) {
+        if (this.blocks == null) {
+            this.blocks = ID;
+        } else {
+            this.blocks = this.blocks + ", " + ID;
+        }
+
     }
 
     public String getBlocks() {
-        return blocks;
+        return this.blocks;
     }
 
     public String getID() {
-        return ID;
+        return this.ID;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void addFollowing(String followingID) {
-        this.followingsNumber ++;
-        if(followingsNumber == 1)
-            followings = followingID;
-        else
-            followings += ", " + followingID;
+        ++this.followingsNumber;
+        if (this.followingsNumber == 1) {
+            this.followings = followingID;
+        } else {
+            this.followings = this.followings + ", " + followingID;
+        }
+
     }
 
     public void removeFollowing(String followingID) {
-        this.followingsNumber --;
-        if(followingsNumber == 0)
-            followings = "";
-        else{
-            followings = followings.replace(followingID + ", ", "");
-            followings = followings.replace(", " + followingID, "");
+        --this.followingsNumber;
+        if (this.followingsNumber == 0) {
+            this.followings = "";
+        } else {
+            this.followings = this.followings.replace(followingID + ", ", "");
+            this.followings = this.followings.replace(", " + followingID, "");
         }
+
     }
 
     public String getFollowings() {
-        return followings;
+        return this.followings;
     }
 
     public void addFollower(String followerID) {
-        this.followersNumber ++;
-        if(followersNumber == 1)
-            followers = followerID;
-        else
-            followers += ", " + followerID;
+        ++this.followersNumber;
+        if (this.followersNumber == 1) {
+            this.followers = followerID;
+        } else {
+            this.followers = this.followers + ", " + followerID;
+        }
+
     }
 
     public void removeFollower(String followerID) {
-        this.followersNumber --;
-        if(followersNumber == 0)
-            followers = " ";
-        else {
-            followers = followers.replace(followerID + ", ", "");
-            followers = followers.replace(", " + followerID, "");
+        --this.followersNumber;
+        if (this.followersNumber == 0) {
+            this.followers = " ";
+        } else {
+            this.followers = this.followers.replace(followerID + ", ", "");
+            this.followers = this.followers.replace(", " + followerID, "");
         }
+
     }
 
     public String getFollowers() {
-        return followers;
+        return this.followers;
     }
 
     public void addPrivateChat(String ID) {
-        if(privateChats == null)
-            privateChats = ID;
-        else
-            privateChats += ", " + ID;
+        if (this.privateChats == null) {
+            this.privateChats = ID;
+        } else {
+            this.privateChats = this.privateChats + ", " + ID;
+        }
+
     }
 
     public void addGroup(String ID) {
-        if(groups == null)
-            groups = ID;
-        else
-            groups += ", " + ID;
+        if (this.groups == null) {
+            this.groups = ID;
+        } else {
+            this.groups = this.groups + ", " + ID;
+        }
+
     }
 
     public String getGroups() {
-        return groups;
+        return this.groups;
     }
 
     public String getPrivateChats() {
-        return privateChats;
+        return this.privateChats;
+    }
+
+    public int getFollowersNumber() {
+        return followersNumber;
+    }
+
+    public int getFollowingsNumber() {
+        return followingsNumber;
+    }
+
+    public String getPosts() {
+        return posts;
     }
 }
+

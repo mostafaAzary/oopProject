@@ -14,14 +14,14 @@
   <tabs>
     <Tab text="My account">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="442.0" prefWidth="600.0" style="-fx-background-color: #000000;">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="413.0" prefWidth="286.0" style="-fx-background-color: #000000;">
                <children>
                   <ImageView fitHeight="260.0" fitWidth="296.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/myaccunt.jpg" />
                      </image>
                   </ImageView>
-                  <Label fx:id="postsNumber" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="57.0" prefHeight="30.0" prefWidth="36.0" text="  " textFill="#f0ecec">
+                  <Label fx:id="postsNumber" alignment="CENTER" contentDisplay="CENTER" layoutX="164.0" layoutY="57.0" prefHeight="30.0" prefWidth="36.0" textFill="#f0ecec">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -41,7 +41,7 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="486.0" prefWidth="374.0" style="-fx-background-color: #000000;" />
                     </content>
                   </ScrollPane>
-                  <Label fx:id="profileUsername" alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="149.0" prefHeight="26.0" prefWidth="107.0" text="    " textFill="#fbfafa">
+                  <Label fx:id="profileUsername" alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="152.0" prefHeight="26.0" prefWidth="88.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
